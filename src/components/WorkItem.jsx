@@ -15,14 +15,14 @@ const WorkItem = ({year, duration, company, location, title, details}) => {
           <ul className="space-y-2 pt-2">
             {Array.isArray(details) ? (
               details.map((detail, index) => (
-                <li key={index} className="text-gray-600 text-sm leading-relaxed flex text-justify">
-                  <span className="mr-2 mt-1.5">•</span>
+                <li key={index} className="text-gray-600 text-sm leading-relaxed flex items-start text-justify">
+                  <span className="mr-2 mt-0.5 flex-shrink-0">•</span>
                   <span>{detail}</span>
                 </li>
               ))
             ) : (
-              <li className="text-gray-600 text-sm leading-relaxed flex text-justify">
-                <span className="mr-2 mt-1.5">•</span>
+              <li className="text-gray-600 text-sm leading-relaxed flex items-start text-justify">
+                <span className="mr-2 mt-0.5 flex-shrink-0">•</span>
                 <span>{details}</span>
               </li>
             )}
@@ -51,14 +51,14 @@ const WorkItem = ({year, duration, company, location, title, details}) => {
           <ul className="space-y-2">
             {Array.isArray(details) ? (
               details.map((detail, index) => (
-                <li key={index} className="text-gray-600 text-sm leading-relaxed flex text-justify">
-                  <span className="mr-2 mt-1.5">•</span>
+                <li key={index} className="text-gray-600 text-sm leading-relaxed flex items-start text-justify">
+                  <span className="mr-2 mt-0.5 flex-shrink-0">•</span>
                   <span>{detail}</span>
                 </li>
               ))
             ) : (
-              <li className="text-gray-600 text-sm leading-relaxed flex text-justify">
-                <span className="mr-2 mt-1.5">•</span>
+              <li className="text-gray-600 text-sm leading-relaxed flex items-start text-justify">
+                <span className="mr-2 mt-0.5 flex-shrink-0">•</span>
                 <span>{details}</span>
               </li>
             )}

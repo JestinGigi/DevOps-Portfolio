@@ -1,17 +1,17 @@
 import React from 'react'
 import { TypeAnimation } from 'react-type-animation'
 import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
-import mainImage from '../assets/main-image.jpeg'
+import mainImage from '../assets/cover-image.png'
 
 const Main = () => {
   return (
     <div id="main">
       {/* <img src="https://images.unsplash.com/photo-1677174771926-f98912ca0460?q=80&w=1174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className='w-full h-screen object-cover object-left scale-x-[-1]' /> */}
       <img src={mainImage} alt="DevOps portfolio hero background featuring technology and coding elements in a professional workspace setting" className='w-full h-screen object-cover object-left scale-x-[-1]' />
-      <div className="w-full h-screen bg-white/50 absolute top-0 left-0">
+      <div className="w-full h-screen bg-white/40 absolute top-0 left-0">
         <div className='max-w-[700px] m-auto h-full w-full flex flex-col justify-center lg:iterm-start items-center'>
-          <h1 className='sm:text-5xl text-4xl font-bold text-gray-800'>I'm Jestin Gigi</h1>
-          <h2 className='sm:text-2xl text-1xl font-medium text-gray-800 mt-4 flex pt-1'>
+          <h1 className='sm:text-5xl text-4xl font-bold text-gray-800 text-center'>I'm Jestin Gigi</h1>
+          <h2 className='sm:text-2xl text-1xl font-medium text-gray-800 mt-4 flex pt-1 text-center'>
             I'm
             <TypeAnimation
               sequence={[
@@ -41,9 +41,7 @@ const Main = () => {
           </a>
         </div>
         </div>
-        
       </div>
-
     </div>
   )
 }

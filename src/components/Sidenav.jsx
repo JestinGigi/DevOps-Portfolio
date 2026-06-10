@@ -44,24 +44,24 @@ const Sidenav = () => {
 
             <div className="md:block hidden fixed top-[25%] left-0 z-10">
                 <div className='flex flex-col'>
-                    <a href="#main" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
-                        <AiOutlineHome data-tooltip-id="home-tooltip" className="cursor-pointer" size={20} />
+                    <a href="#main" data-tooltip-id="home-tooltip" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
+                        <AiOutlineHome size={20} />
                         <Tooltip id="home-tooltip" place="right" content="Home" />
                     </a>
-                    <a href="#Work" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
-                        <GrProjects data-tooltip-id="work-tooltip" className="cursor-pointer" size={20} />
+                    <a href="#Work" data-tooltip-id="work-tooltip" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
+                        <GrProjects size={20} />
                         <Tooltip id="work-tooltip" place="right" content="Work" />
                     </a>
-                    <a href="#projects" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
-                        <AiOutlineProject data-tooltip-id="projects-tooltip" className="cursor-pointer" size={20} />
+                    <a href="#projects" data-tooltip-id="projects-tooltip" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
+                        <AiOutlineProject size={20} />
                         <Tooltip id="projects-tooltip" place="right" content="Projects" />
                     </a>
-                    <a href="https://docs.google.com/document/d/1DOYg2nca4o4EaM5I3GsFdASV9qiDuyJT2Y-RGxV-TmE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
-                        <BsPerson data-tooltip-id="resume-tooltip" className="cursor-pointer" size={20} />
+                    <a href="https://docs.google.com/document/d/1DOYg2nca4o4EaM5I3GsFdASV9qiDuyJT2Y-RGxV-TmE/edit?usp=sharing" target="_blank" rel="noopener noreferrer" data-tooltip-id="resume-tooltip" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
+                        <BsPerson size={20} />
                         <Tooltip id="resume-tooltip" place="right" content="Resume" />
                     </a>
-                    <a href="#contact" className='rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 cursor-pointer hover:scale-110 ease-in duration-200'>
-                        <AiOutlineMail data-tooltip-id="contact-tooltip" className="cursor-pointer" size={20} />
+                    <a href="#contact"  data-tooltip-id="contact-tooltip" className="rounded-full shadow-lg bg-gray-100 shadow-gray-400 m-4 p-4 hover:scale-110 ease-in duration-200">
+                        <AiOutlineMail size={20} />
                         <Tooltip id="contact-tooltip" place="right" content="Contact" />
                     </a>
                 </div>

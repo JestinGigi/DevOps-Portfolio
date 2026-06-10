@@ -3,40 +3,45 @@ import EducationItem from './EducationItem'
 
 const data = [
   {
-    year: 'Aug 2019 - Jun 2023',
+    year: '2020 - 2024',
     duration: '4yrs',
-    institution: 'PUNE INSTITUTE OF COMPUTER TECHNOLOGY',
+    institution: 'MIT WORLD PEACE UNIVERSITY',
     location: 'India, Pune',
-    degree: 'Bachelor of Engineering in Computer Engineering',
+    degree: 'Bachelor of Technology - Computer Science and Engineering',
     details: [
-      'CGPA: 8.5/10',
-      'Relevant Coursework: Data Structures, Algorithms, Operating Systems, Computer Networks, Database Management Systems, Cloud Computing',
-      'Member of Technical Club, participated in various hackathons and coding competitions',
-      'Final Year Project: Automated CI/CD Pipeline Implementation for Microservices Architecture'
+      'Specialized in Computer Science and Engineering with focus on modern software development',
+      'Core Skills: Machine Learning, Python, Linux System Administration',
+      'Web Technologies: HTML, CSS, Bootstrap',
+      'Developed strong foundation in Linux and system-level programming',
+      'Participated in technical projects and collaborative learning initiatives'
     ]
   },
   {
-    year: 'Jun 2017 - Apr 2019',
+    year: '2018 - 2020',
     duration: '2yrs',
-    institution: 'JUNIOR COLLEGE',
-    location: 'India, Pune',
-    degree: 'Higher Secondary Certificate (HSC)',
+    institution: 'MNR SCHOOL OF EXCELLENCE',
+    location: 'India',
+    degree: 'All India Senior School Certificate Examination (AISSCE) - Science',
     details: [
-      'Percentage: 85%',
-      'Stream: Science (Physics, Chemistry, Mathematics)',
-      'Participated in science exhibitions and technical workshops'
+      'Grade: 91.4%',
+      'Stream: Science with Computer Science',
+      'Technical Skills: Data Structures, C++, Database Management System (DBMS), SQL, Statistics',
+      'Strong foundation in DSA and algorithmic problem solving',
+      'Completed advanced coursework in programming and database systems'
     ]
   },
   {
-    year: 'Jun 2007 - May 2017',
+    year: '2008 - 2018',
     duration: '10yrs',
-    institution: 'HIGH SCHOOL',
-    location: 'India, Pune',
-    degree: 'Secondary School Certificate (SSC)',
+    institution: 'DAV INTERNATIONAL SCHOOL, KHARGHAR',
+    location: 'India, Navi Mumbai',
+    degree: 'All India Secondary School Examination (AISSE)',
     details: [
-      'Percentage: 90%',
-      'Awarded Best Student in Science and Mathematics',
-      'Active participant in school competitions and events'
+      'Grade: 89.4%',
+      'Activities: Drawing and Craft',
+      'Developed strong collaboration and presentation skills',
+      'Active participant in co-curricular activities',
+      'Built foundational academic and interpersonal competencies'
     ]
   }
 ]
@@ -44,7 +49,7 @@ const data = [
 const Education = () => {
   return (
     <div id="Education" className='bg-gray-50 py-16'>
-      <div className='max-w-[1040px] m-auto md:pl-20 p-4'>
+      <div className='max-w-[1040px] m-auto px-4 md:px-20'>
         <div className="mb-12">
           <h1 className="text-4xl font-bold text-center text-[#001b5e] mb-2">Education</h1>
           <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-400 mx-auto rounded-full"></div>
