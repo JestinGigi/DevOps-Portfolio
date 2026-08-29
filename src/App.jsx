@@ -10,7 +10,7 @@ import Contact from './components/Contact'
 function App() {
 
   return (
-    <div>
+    <div style={{ background: '#030712', minHeight: '100vh' }}>
       <Sidenav />
       <Main />
       <TechStack />
@@ -18,7 +18,7 @@ function App() {
       <Education />
       <Projects />
       <Contact />
-    </div >
+    </div>
   )
 }
 

@@ -8,106 +8,123 @@ const TechStack = () => {
       name: 'Kubernetes',
       experience: '2 years',
       level: 85,
-      icon: <SiKubernetes size={40} className="text-blue-600" />,
-      color: 'bg-blue-600'
+      icon: <SiKubernetes size={36} />,
+      iconColor: '#326CE5',
+      accentColor: '#326CE5',
     },
     {
       name: 'Docker',
       experience: '2 years',
       level: 85,
-      icon: <FaDocker size={40} className="text-sky-500" />,
-      color: 'bg-sky-500'
+      icon: <FaDocker size={36} />,
+      iconColor: '#2496ED',
+      accentColor: '#2496ED',
     },
     {
       name: 'Jenkins',
       experience: '2 years',
       level: 85,
-      icon: <FaJenkins size={40} className="text-red-600" />,
-      color: 'bg-red-600'
+      icon: <FaJenkins size={36} />,
+      iconColor: '#D33833',
+      accentColor: '#D33833',
     },
     {
       name: 'AWS',
       experience: '1.5 years',
       level: 75,
-      icon: <FaAws size={40} className="text-orange-500" />,
-      color: 'bg-orange-500'
+      icon: <FaAws size={36} />,
+      iconColor: '#FF9900',
+      accentColor: '#FF9900',
     },
     {
       name: 'Terraform',
       experience: '1 year',
       level: 70,
-      icon: <SiTerraform size={40} className="text-purple-600" />,
-      color: 'bg-purple-600'
+      icon: <SiTerraform size={36} />,
+      iconColor: '#7B42BC',
+      accentColor: '#7B42BC',
     },
     {
       name: 'Artifactory (JFrog)',
       experience: '2 years',
       level: 85,
-      icon: <SiJfrog size={40} className="text-green-600" />,
-      color: 'bg-green-600'
-    }
+      icon: <SiJfrog size={36} />,
+      iconColor: '#40BE46',
+      accentColor: '#40BE46',
+    },
+  ]
+
+  const stats = [
+    { value: '2+', label: 'Years Total IT Experience' },
+    { value: '2+', label: 'Years Full-Time Experience' },
+    { value: '6+', label: 'Core Technologies' },
   ]
 
   return (
-    <div id="TechStack" className='py-16 bg-gradient-to-br from-gray-50 to-gray-100'>
+    <div id="TechStack" className='py-24 bg-grid' style={{ background: 'linear-gradient(180deg, #030712 0%, #0d1117 100%)' }}>
       <div className='max-w-[1040px] m-auto px-4 md:px-20'>
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-center text-[#001b5e] mb-2">Tech Stack</h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-400 mx-auto rounded-full"></div>
-          <p className="text-center text-gray-600 mt-4">Core DevOps tools and technologies I work with</p>
+
+        {/* Section header */}
+        <div className="mb-16 text-center">
+          <p className='font-mono text-xs tracking-widest mb-3' style={{ color: '#06b6d4' }}>01 / EXPERTISE</p>
+          <h2 className='text-4xl font-extrabold tracking-tight mb-3' style={{ color: '#f1f5f9' }}>Tech Stack</h2>
+          <div className='w-16 h-0.5 mx-auto rounded-full section-underline mb-4' />
+          <p className='text-sm' style={{ color: '#475569' }}>Core DevOps tools and technologies I work with</p>
         </div>
 
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Skills grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {skills.map((skill, index) => (
-            <div 
-              key={index} 
-              className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+            <div
+              key={index}
+              className='card-glow rounded-2xl p-6'
+              style={{ background: 'rgba(15,23,42,0.6)', backdropFilter: 'blur(12px)' }}
             >
-              {/* Icon and Title */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
+              {/* Icon + name row */}
+              <div className="flex items-center gap-4 mb-5">
+                <div className='p-2.5 rounded-xl' style={{
+                  background: `${skill.iconColor}12`,
+                  border: `1px solid ${skill.iconColor}25`,
+                  color: skill.iconColor
+                }}>
                   {skill.icon}
-                  <div>
-                    <h3 className="text-lg font-bold text-gray-800">{skill.name}</h3>
-                    <p className="text-xs text-gray-500">{skill.experience}</p>
-                  </div>
                 </div>
+                <div>
+                  <h3 className='font-semibold text-sm' style={{ color: '#f1f5f9' }}>{skill.name}</h3>
+                  <p className='font-mono text-xs mt-0.5' style={{ color: '#475569' }}>{skill.experience}</p>
+                </div>
+                <span className='ml-auto font-mono text-sm font-semibold' style={{ color: skill.accentColor }}>
+                  {skill.level}%
+                </span>
               </div>
 
-              {/* Progress Bar */}
-              <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
-                <div 
-                  className={`h-full ${skill.color} rounded-full transition-all duration-1000 ease-out`}
-                  style={{ width: `${skill.level}%` }}
-                ></div>
-              </div>
-              
-              {/* Proficiency Label */}
-              <div className="flex justify-between mt-2">
-                <span className="text-xs text-gray-600">Proficiency</span>
-                <span className="text-xs font-semibold text-gray-800">{skill.level}%</span>
+              {/* Progress bar */}
+              <div className='w-full h-1.5 rounded-full overflow-hidden' style={{ background: 'rgba(148,163,184,0.08)' }}>
+                <div
+                  className='h-full rounded-full transition-all duration-1000 ease-out'
+                  style={{
+                    width: `${skill.level}%`,
+                    background: `linear-gradient(90deg, ${skill.accentColor}aa, ${skill.accentColor})`,
+                    boxShadow: `0 0 8px ${skill.accentColor}55`
+                  }}
+                />
               </div>
             </div>
           ))}
         </div>
 
-        {/* Additional Info */}
-        <div className="mt-12 text-center bg-white rounded-xl shadow-lg p-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div>
-              <p className="text-3xl font-bold text-[#001b5e]">2+</p>
-              <p className="text-gray-600 text-sm mt-1">Years Total IT Experience</p>
+        {/* Stats row */}
+        <div className='mt-10 grid grid-cols-1 md:grid-cols-3 gap-5'>
+          {stats.map((s, i) => (
+            <div
+              key={i}
+              className='card-glow rounded-2xl p-6 text-center'
+              style={{ background: 'rgba(15,23,42,0.6)', backdropFilter: 'blur(12px)' }}
+            >
+              <p className='text-3xl font-extrabold text-gradient mb-1'>{s.value}</p>
+              <p className='text-xs font-mono' style={{ color: '#475569' }}>{s.label}</p>
             </div>
-            <div>
-              <p className="text-3xl font-bold text-[#001b5e]">1.5+</p>
-              <p className="text-gray-600 text-sm mt-1">Years Full-Time Experience</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-[#001b5e]">6+</p>
-              <p className="text-gray-600 text-sm mt-1">Core Technologies</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
