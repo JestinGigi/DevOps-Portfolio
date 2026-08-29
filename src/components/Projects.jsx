@@ -18,24 +18,24 @@ const Projects = () => {
           <ProjectItem img={stockvis} title='StockVis' subtitle='Stock Visualization & Prediction' link='https://github.com/JestinGigi/StockVis' />
           <ProjectItem
             img={gitlab}
-            title='GitLab'
-            subtitle='GitLab Monitoring using Docker & Grafana'
+            title='GitLab Monitoring'
+            subtitle='GitLab Exporter — EC2, Docker & Grafana'
             showModal={true}
-            description='Automated CI/CD pipelines using GitLab for continuous integration and deployment. Features include automated testing, code quality checks, and containerized deployments.'
+            description='Set up GitLab monitoring on an EC2 instance using the GitLab Exporter project. Deployed the exporter via Docker and connected it to Grafana to visualize GitLab metrics including pipeline status, merge request activity, and CI/CD performance in real time.'
           />
           <ProjectItem
             img={k8s}
-            title='EKS'
-            subtitle='K8s Cluster Deployment using VirtualBox'
+            title='Kubernetes'
+            subtitle='K8s Cluster Setup using Minikube'
             showModal={true}
-            description='Amazon EKS cluster deployment with Kubernetes orchestration. Implements auto-scaling, load balancing, and secure container management in AWS cloud infrastructure.'
+            description='Set up Kubernetes clusters using Minikube — including a single-node managed cluster and a multi-node cluster with 1 control plane and 2 worker nodes. Practiced pod scheduling, service exposure, and cluster management.'
           />
           <ProjectItem
             img={terraform}
             title='Terraform'
             subtitle='EC2 Instance Provisioning using Terraform'
             showModal={true}
-            description='Infrastructure as Code using Terraform to provision and manage cloud resources. Includes modules for networking, compute instances, storage, and security configurations.'
+            description='Deployed an EC2 instance on AWS using Terraform. Defined infrastructure as code including instance configuration, security groups, and key pair setup for repeatable, version-controlled cloud provisioning.'
           />
         </div>
       </div>
