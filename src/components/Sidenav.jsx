@@ -12,7 +12,7 @@ const Sidenav = () => {
         { href: '#main', icon: <AiOutlineHome size={18} />, label: 'Home', tooltipId: 'home-tooltip' },
         { href: '#Work', icon: <GrProjects size={18} />, label: 'Work', tooltipId: 'work-tooltip' },
         { href: '#projects', icon: <AiOutlineProject size={18} />, label: 'Projects', tooltipId: 'projects-tooltip' },
-        { href: 'https://docs.google.com/document/d/1DOYg2nca4o4EaM5I3GsFdASV9qiDuyJT2Y-RGxV-TmE/edit?usp=sharing', icon: <BsPerson size={18} />, label: 'Resume', tooltipId: 'resume-tooltip', external: true },
+        { href: 'https://docs.google.com/document/d/1tv78sG8WVJdtZRE501Nvy4Ev0ss6LGi5SRPM0WqmPdc/edit?usp=sharing', icon: <BsPerson size={18} />, label: 'Resume', tooltipId: 'resume-tooltip', external: true },
         { href: '#contact', icon: <AiOutlineMail size={18} />, label: 'Contact', tooltipId: 'contact-tooltip' },
     ];
 
