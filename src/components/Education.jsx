@@ -5,14 +5,14 @@ const data = [
   {
     year: '2020 - 2024',
     duration: '4yrs',
-    institution: 'MIT WORLD PEACE UNIVERSITY',
-    location: 'India, Pune',
-    degree: 'Bachelor of Technology - Computer Science and Engineering',
+    institution: 'DR. VISHWANATH KARAD MIT WORLD PEACE UNIVERSITY (MIT-WPU)',
+    location: 'Pune, Maharashtra',
+    degree: 'Bachelor of Technology — Computer Science & Engineering',
     details: [
+      'CGPA: 9.2',
       'Specialized in Computer Science and Engineering with focus on modern software development',
       'Core Skills: Machine Learning, Python, Linux System Administration',
       'Web Technologies: HTML, CSS, Bootstrap',
-      'Developed strong foundation in Linux and system-level programming',
       'Participated in technical projects and collaborative learning initiatives'
     ]
   },
@@ -31,8 +31,8 @@ const data = [
     ]
   },
   {
-    year: '2008 - 2018',
-    duration: '10yrs',
+    year: '2016 - 2018',
+    duration: '2yrs',
     institution: 'DAV INTERNATIONAL SCHOOL, KHARGHAR',
     location: 'India, Navi Mumbai',
     degree: 'All India Secondary School Examination (AISSE)',
@@ -48,14 +48,15 @@ const data = [
 
 const Education = () => {
   return (
-    <div id="Education" className='bg-gray-50 py-16'>
+    <div id="Education" className='py-24' style={{ background: 'linear-gradient(180deg, #030712 0%, #0d1117 100%)' }}>
       <div className='max-w-[1040px] m-auto px-4 md:px-20'>
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold text-center text-[#001b5e] mb-2">Education</h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-emerald-600 to-teal-400 mx-auto rounded-full"></div>
+        <div className="mb-16 text-center">
+          <p className='font-mono text-xs tracking-widest mb-3' style={{ color: '#10b981' }}>03 / EDUCATION</p>
+          <h2 className='text-4xl font-extrabold tracking-tight mb-3' style={{ color: '#f1f5f9' }}>Education</h2>
+          <div className='w-16 h-0.5 mx-auto rounded-full' style={{ background: 'linear-gradient(90deg, #10b981, #06b6d4)' }} />
         </div>
         {data.map((item, idx) => (
-          <EducationItem 
+          <EducationItem
             key={idx}
             year={item.year}
             duration={item.duration}
