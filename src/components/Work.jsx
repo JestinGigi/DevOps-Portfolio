@@ -3,68 +3,62 @@ import WorkItem from './WorkItem'
 
 const data = [
   {
-    year: 'Jun 2024 - Present',
-    duration: '2yr 2mos',
-    company: 'HMS NETWORKS INDIA PVT LTD',
+    period: 'June 2024 – Present',
+    company: 'HMS Networks India Pvt Ltd',
     location: 'Pune, Maharashtra',
-    title: 'Junior SRE & DevOps Engineer',
+    title: 'SRE & DevOps Engineer',
+    current: true,
     details: [
-      'Resolved 10+ customer- and developer-reported production incidents per week across 15+ microservices deployed on EKS, performing root-cause analysis via k9s log inspection and RDS database queries, achieving a 75% resolution rate.',
-      'Led weekly release cycles for Ewon Cloud, coordinating deployments across microservices with minimal downtime.',
-      'Built Grafana dashboards and alerting rules for production infrastructure, improving real-time visibility into service health and reducing time-to-detect for critical issues.',
-      'Administered AWS IoT Core for 200+ Ewon Edge Gateways, including device shadows and rules engine configuration.',
-      'Maintained Ewon Cloud infrastructure using Terraform, enabling repeatable, version-controlled infrastructure provisioning.'
-    ]
+      'Resolved 10+ customer-reported production incidents per week across 15+ microservices using Grafana log drill-down, k9s logs, RDS database queries and Python + Bash automation, achieving a 75% resolution rate.',
+      'Built Grafana dashboards and alerting rules for release managers and production infrastructure against defined SLO/SLA targets (99.8%/99.6%), improving observability and reducing time to detect critical issues.',
+      'Troubleshoot production issues across 200+ gateways using device shadows and job status to diagnose connectivity and command-delivery failures.',
+      'Led weekly production and pre-production release cycles using GitOps practices (Flux CD / GitLab CI), coordinating deployments across multiple microservices with minimal downtime.',
+      'Managed Ewon Cloud infrastructure through Terraform, enabling repeatable, version-controlled provisioning and reducing manual configuration.',
+      'Participate in 24/7 on-call rotations using Opsgenie and Jira Service Desk, triaging critical production alerts and performing root cause analyses that drive incident response workflows.',
+      'Designed and operationalised a structured disaster recovery runbook for restoring multi-tier cloud services from AWS Backup vaults into Amazon Aurora RDS clusters.',
+    ],
   },
   {
-    year: 'Aug 2023 - May 2024',
-    duration: '10mos',
-    company: 'REDLION CONTROLS PVT LTD',
+    period: 'August 2023 – May 2024',
+    company: 'Redlion Controls Pvt Ltd',
     location: 'Pune, Maharashtra',
-    title: 'Graduate Engineer Trainee',
+    title: 'Junior DevOps Engineer (GET)',
     details: [
-      'Supported industrial automation product lines including PM-50 visualization devices, SPM and CUB meters.',
-      'Maintained and optimized Jenkins CI/CD pipelines, reducing build failures.',
-      'Built and deployed production-ready Docker images as development environments for building firmware hex files.',
-      'Gained hands-on exposure to Jenkins, JFrog Artifactory, SonarQube, Dockerization, and Bash scripting.'
-    ]
+      'Owned and maintained 50+ Jenkins CI/CD pipelines supporting firmware builds and release processes for 5+ industrial automation products.',
+      'Built production-ready Docker-based development environments for repeatable firmware compilation and delivery of validated hex artifacts.',
+      'Integrated SonarQube analysis into C++ firmware pipelines to detect issues earlier, enforce coding standards and reduce manual review dependency.',
+      'Served as primary owner for Jenkins and JFrog Artifactory infrastructure and completed a structured knowledge transfer to the incoming DevOps lead.',
+    ],
   },
   {
-    year: 'Jan 2022 - Jun 2022',
-    duration: '6mos',
-    company: 'HACK-X SECURITY',
+    period: 'January 2022 – June 2022',
+    company: 'Hack X Security',
     location: 'Pune, Maharashtra',
     title: 'Junior Security Intern',
     details: [
-      'Performed vulnerability assessments and penetration tests for clients, ensuring robust protection against potential security threats.',
-      'Utilized tools such as Sqlmap, Commix, XSSmap, and ParamSpider to enhance efficiency and accuracy of penetration testing.',
-      'Applied Nmap, Burp Suite, and Linux tooling for comprehensive VAPT on client applications.'
-    ]
-  }
+      'Performed vulnerability assessments and penetration tests on 2+ client web applications, identifying SQLi, command injection and CORS issues and documenting them with severity ratings and remediation guidance.',
+      'Automated reconnaissance and testing with Sqlmap, Commix, ParamSpider, Nmap and Burp Suite, aligned to the OWASP Top 10.',
+      'Built a Bash tool that validates whether user-supplied API keys are live, flagging 2+ active leaks and cutting manual review time by 70%.',
+      'Collaborated to develop and deliver social media content, resulting in a 20% increase in customer engagement.',
+    ],
+  },
 ]
 
 const Work = () => {
   return (
-    <div id="Work" className='py-24' style={{ background: 'linear-gradient(180deg, #0d1117 0%, #030712 100%)' }}>
-      <div className='max-w-[1040px] m-auto px-4 md:px-20'>
-        <div className="mb-16 text-center">
-          <p className='font-mono text-xs tracking-widest mb-3' style={{ color: '#06b6d4' }}>02 / EXPERIENCE</p>
-          <h2 className='text-4xl font-extrabold tracking-tight mb-3' style={{ color: '#f1f5f9' }}>Work Experience</h2>
-          <div className='w-16 h-0.5 mx-auto rounded-full section-underline' />
+    <section id='experience' aria-labelledby='experience-title' className='section'>
+      <div className='container-x'>
+        <div className='mb-14 max-w-3xl'>
+          <p className='section-label mb-5'>Experience</p>
+          <h2 id='experience-title' className='heading-2'>Where I’ve built and run infrastructure</h2>
         </div>
-        {data.map((item, idx) => (
-          <WorkItem
-            key={idx}
-            year={item.year}
-            duration={item.duration}
-            company={item.company}
-            location={item.location}
-            title={item.title}
-            details={item.details}
-          />
-        ))}
+        <ol className='border-t border-neutral-700'>
+          {data.map((item) => (
+            <WorkItem key={item.company} {...item} />
+          ))}
+        </ol>
       </div>
-    </div>
+    </section>
   )
 }
 

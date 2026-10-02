@@ -1,99 +1,85 @@
 import React from 'react'
+import { FiArrowRight, FiArrowUpRight, FiDownload } from 'react-icons/fi'
+import { profile } from '../data/profile'
+
+const directLinks = [
+    { label: 'Email', text: profile.email, href: `mailto:${profile.email}`, icon: FiArrowRight },
+    { label: 'LinkedIn', text: 'linkedin.com/in/jestingigi11', href: profile.linkedin, icon: FiArrowUpRight, external: true },
+    { label: 'GitHub', text: 'github.com/JestinGigi', href: profile.github, icon: FiArrowUpRight, external: true },
+    { label: 'Resume', text: 'Download PDF', href: profile.resume, icon: FiDownload, download: profile.resumeFileName },
+]
+
+const Field = ({ id, label, optional = false, children }) => (
+    <div>
+        <label htmlFor={id} className='block text-base font-bold text-neutral-100'>
+            {label}
+            {optional && <span className='ml-2 font-normal text-neutral-400'>(optional)</span>}
+        </label>
+        <div className='mt-1'>{children}</div>
+    </div>
+)
 
 const Contact = () => {
     return (
-        <div id='contact' className='py-24' style={{ background: 'linear-gradient(180deg, #030712 0%, #0d1117 100%)' }}>
-            <div className='max-w-[1040px] m-auto px-4 md:px-20'>
-                <div className="mb-16 text-center">
-                    <p className='font-mono text-xs tracking-widest mb-3' style={{ color: '#3b82f6' }}>05 / CONTACT</p>
-                    <h2 className='text-4xl font-extrabold tracking-tight mb-3' style={{ color: '#f1f5f9' }}>Get In Touch</h2>
-                    <div className='w-16 h-0.5 mx-auto rounded-full mb-4' style={{ background: 'linear-gradient(90deg, #3b82f6, #06b6d4)' }} />
-                    <p className='text-sm' style={{ color: '#475569' }}>Have a project in mind or want to connect? Drop me a message.</p>
-                </div>
+        <section id='contact' aria-labelledby='contact-title' className='section bg-neutral-700/40'>
+            <div className='container-x grid gap-16 lg:grid-cols-2 lg:gap-20'>
+                <div>
+                    <span className='hero-rule mb-8 w-24' aria-hidden='true' />
+                    <h2 id='contact-title' className='heading-2'>
+                        Interested in working together? Let’s{' '}
+                        <span className='whitespace-nowrap'>
+                            talk
+                            <FiArrowRight aria-hidden='true' className='ml-3 inline-block align-[-0.12em] text-secondary' />
+                        </span>
+                    </h2>
+                    <p className='mt-6 max-w-xl'>
+                        Reach out about SRE and DevOps roles, reliability work or anything on this page.
+                    </p>
 
-                <div className='max-w-2xl mx-auto'>
-                    <form
-                        action="https://formcarry.com/s/yWiPqmqA_Lp"
-                        method='POST'
-                        encType="multipart/form-data"
-                        className='rounded-2xl p-8'
-                        style={{
-                            background: 'rgba(15,23,42,0.6)',
-                            border: '1px solid rgba(148,163,184,0.08)',
-                            backdropFilter: 'blur(12px)',
-                        }}
-                    >
-                        <div className='grid md:grid-cols-2 gap-5'>
-                            <div className='flex flex-col gap-1.5'>
-                                <label className='font-mono text-xs tracking-widest' style={{ color: '#475569' }}>NAME</label>
-                                <input
-                                    className='input-dark rounded-xl p-3.5 text-sm'
-                                    type="text"
-                                    name="name"
-                                    placeholder="Jestin Gigi"
-                                />
-                            </div>
-                            <div className='flex flex-col gap-1.5'>
-                                <label className='font-mono text-xs tracking-widest' style={{ color: '#475569' }}>PHONE</label>
-                                <input
-                                    className='input-dark rounded-xl p-3.5 text-sm'
-                                    type="text"
-                                    name='phone'
-                                    placeholder="+1 234 567 890"
-                                />
-                            </div>
-                            <div className='flex flex-col gap-1.5 md:col-span-2'>
-                                <label className='font-mono text-xs tracking-widest' style={{ color: '#475569' }}>EMAIL</label>
-                                <input
-                                    className='input-dark rounded-xl p-3.5 text-sm w-full'
-                                    type="email"
-                                    name='email'
-                                    placeholder="hello@example.com"
-                                />
-                            </div>
-                            <div className='flex flex-col gap-1.5 md:col-span-2'>
-                                <label className='font-mono text-xs tracking-widest' style={{ color: '#475569' }}>SUBJECT</label>
-                                <input
-                                    className='input-dark rounded-xl p-3.5 text-sm'
-                                    type="text"
-                                    name='subject'
-                                    placeholder="Let's work together"
-                                />
-                            </div>
-                            <div className='flex flex-col gap-1.5 md:col-span-2'>
-                                <label className='font-mono text-xs tracking-widest' style={{ color: '#475569' }}>MESSAGE</label>
-                                <textarea
-                                    className='input-dark rounded-xl p-3.5 text-sm resize-none'
-                                    rows='8'
-                                    name='message'
-                                    placeholder="Tell me about your project..."
-                                />
-                            </div>
-                            <div className='md:col-span-2'>
-                                <button
-                                    type='submit'
-                                    className='w-full py-4 rounded-xl font-semibold text-sm tracking-wide transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]'
-                                    style={{
-                                        background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
-                                        color: '#f1f5f9',
-                                        boxShadow: '0 4px 24px rgba(6,182,212,0.25)',
-                                    }}
+                    <ul className='mt-10 grid gap-7 sm:grid-cols-2'>
+                        {directLinks.map((link) => {
+                            const Icon = link.icon
+                            return (
+                            <li key={link.label}>
+                                <p className='mb-2 text-sm font-bold uppercase tracking-[0.08em] text-neutral-300'>{link.label}</p>
+                                <a
+                                    href={link.href}
+                                    className='arrow-link break-all text-base sm:break-normal'
+                                    target={link.external ? '_blank' : undefined}
+                                    rel={link.external ? 'noopener noreferrer' : undefined}
+                                    download={link.download}
                                 >
-                                    Send Message
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                                    {link.text}
+                                    <Icon aria-hidden='true' size={18} />
+                                    {link.external && <span className='sr-only'>(opens in a new tab)</span>}
+                                </a>
+                            </li>
+                            )
+                        })}
+                    </ul>
                 </div>
-            </div>
 
-            {/* Footer */}
-            <div className='mt-16 text-center'>
-                <p className='font-mono text-xs' style={{ color: '#1e293b' }}>
-                    Jestin Gigi · DevOps Engineer · {new Date().getFullYear()}
-                </p>
+                <form action='https://formcarry.com/s/yWiPqmqA_Lp' method='POST' encType='multipart/form-data' className='grid gap-9 lg:pt-4'>
+                    <Field id='contact-name' label='Your name'>
+                        <input id='contact-name' className='field-input' type='text' name='name' autoComplete='name' required />
+                    </Field>
+                    <Field id='contact-email' label='Your email address'>
+                        <input id='contact-email' className='field-input' type='email' name='email' autoComplete='email' required />
+                    </Field>
+                    <Field id='contact-subject' label='Subject' optional>
+                        <input id='contact-subject' className='field-input' type='text' name='subject' />
+                    </Field>
+                    <Field id='contact-message' label='Message'>
+                        <textarea id='contact-message' className='field-input min-h-36 resize-y' name='message' rows='4' required />
+                    </Field>
+                    <div>
+                        <button type='submit' className='btn btn-primary w-full sm:w-auto'>
+                            Send message <FiArrowRight aria-hidden='true' size={20} />
+                        </button>
+                    </div>
+                </form>
             </div>
-        </div>
+        </section>
     )
 }
 

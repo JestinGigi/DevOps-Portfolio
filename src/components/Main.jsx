@@ -1,196 +1,99 @@
 import React from 'react'
-import { TypeAnimation } from 'react-type-animation'
-import { FaLinkedin, FaGithub, FaInstagram } from 'react-icons/fa'
-import profilePhoto from '../assets/profile.jpg'
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
+import { FiArrowRight, FiDownload, FiMail } from 'react-icons/fi'
+import profilePhoto from '../assets/profile-portrait.jpg'
+import { profile } from '../data/profile'
+
+const socials = [
+  { href: profile.linkedin, label: 'LinkedIn', icon: <FaLinkedinIn size={20} />, external: true },
+  { href: profile.github, label: 'GitHub', icon: <FaGithub size={20} />, external: true },
+  { href: `mailto:${profile.email}`, label: 'Email', icon: <FiMail size={20} /> },
+]
+
+const HeroAside = ({ title, children }) => (
+  <div className='flex flex-col items-start border-b border-neutral-700 py-8 first:pt-0 last:border-0 last:pb-0 md:border-0 md:py-0 xl:border-b xl:py-8 xl:first:pt-0 xl:last:border-0 xl:last:pb-0'>
+    <p className='mb-3 text-base font-bold uppercase tracking-[0.06em] text-neutral-100'>{title}</p>
+    {children}
+  </div>
+)
 
 const Main = () => {
   return (
-    <div id="main" className='relative min-h-screen flex items-center overflow-hidden'
-      style={{ background: 'linear-gradient(135deg, #030712 0%, #0d1117 60%, #0f172a 100%)' }}
-    >
-      {/* Dot grid background */}
-      <div className="absolute inset-0 bg-grid opacity-30" />
+    <section id='top' aria-labelledby='hero-title' className='overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28'>
+      <div className='container-x grid items-center gap-12 md:grid-cols-[1.1fr_0.9fr] lg:gap-14 xl:grid-cols-[1.15fr_0.85fr_0.72fr] xl:gap-12'>
 
-      {/* Subtle radial glow behind photo side */}
-      <div className='absolute right-0 top-1/2 -translate-y-1/2 w-[55%] h-[90%] rounded-full pointer-events-none'
-        style={{
-          background: 'radial-gradient(ellipse at 70% 50%, rgba(6,182,212,0.07) 0%, transparent 70%)',
-          filter: 'blur(40px)',
-        }}
-      />
-
-      <div className='relative z-10 max-w-[1040px] w-full mx-auto px-6 md:px-20 grid md:grid-cols-2 gap-12 items-center py-24 md:py-0'>
-
-        {/* LEFT — text content */}
-        <div className='flex flex-col items-start order-2 md:order-1'>
-
-          {/* Status badge */}
-          <div className='flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full font-mono text-xs tracking-widest'
-            style={{
-              background: 'rgba(6,182,212,0.08)',
-              border: '1px solid rgba(6,182,212,0.25)',
-              color: '#06b6d4',
-            }}>
-            <span className='w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse' />
-            AVAILABLE FOR OPPORTUNITIES
-          </div>
-
-          {/* Name */}
-          <h1 className='text-5xl sm:text-6xl font-extrabold tracking-tight mb-3' style={{ color: '#f1f5f9', lineHeight: 1.1 }}>
-            Hi, I'm <br />
-            <span className='text-gradient'>Jestin Gigi</span>
+        <div>
+          <span className='hero-rule mb-8 md:mb-10' aria-hidden='true' />
+          <h1 id='hero-title' className='text-[clamp(2.5rem,1.4rem+3.2vw,4.25rem)] leading-[1.12] tracking-[-0.01em]'>
+            I’m Jestin, an SRE &amp; DevOps Engineer
           </h1>
-
-          {/* Type animation */}
-          <div className='flex items-center gap-2 text-lg font-medium mb-5' style={{ color: '#94a3b8' }}>
-            <span className='font-mono' style={{ color: '#475569' }}>&gt;_</span>
-            <TypeAnimation
-              sequence={[
-                'Site Reliability Engineer',
-                1200,
-                'DevOps Engineer',
-                1200,
-                'CI/CD & Containers',
-                1200,
-                'AWS & Kubernetes',
-                1200,
-                'Infrastructure as Code',
-                1200,
-              ]}
-              wrapper="span"
-              cursor={true}
-              style={{ color: '#06b6d4', fontFamily: "'JetBrains Mono', monospace" }}
-              repeat={Infinity}
-            />
-          </div>
-
-          {/* Short bio line */}
-          <p className='text-sm leading-relaxed mb-8 max-w-sm' style={{ color: '#475569' }}>
-            SRE with 2+ years managing production infrastructure on AWS (EKS, RDS, IoT Core) and driving observability through Grafana, Prometheus, and Terraform-based automation.
+          <p className='mt-6 max-w-xl text-lg text-neutral-400 md:text-xl md:leading-[1.6]'>
+            I keep AWS production infrastructure reliable, observable and automated, from EKS microservices and Grafana alerting to Terraform-managed cloud and 24/7 on-call response.
           </p>
-
-          {/* CTA buttons */}
-          <div className='flex gap-3 mb-10'>
-            <a href="#contact"
-              className='px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105'
-              style={{
-                background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
-                color: '#f1f5f9',
-                boxShadow: '0 4px 20px rgba(6,182,212,0.3)',
-              }}>
-              Hire Me
+          <div className='mt-10 flex flex-wrap gap-4'>
+            <a href='#projects' className='btn btn-primary'>
+              View Projects <FiArrowRight aria-hidden='true' size={20} />
             </a>
-            <a href="#projects"
-              className='px-6 py-3 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105'
-              style={{
-                background: 'transparent',
-                border: '1px solid rgba(6,182,212,0.35)',
-                color: '#06b6d4',
-              }}>
-              See Projects
+            <a href={profile.resume} download={profile.resumeFileName} className='btn btn-secondary'>
+              <FiDownload aria-hidden='true' size={20} /> Download Resume
             </a>
-          </div>
-
-          {/* Social icons */}
-          <div className='flex gap-3'>
-            {[
-              { href: 'https://www.instagram.com/j_prof_x/', icon: <FaInstagram size={18} />, label: 'Instagram' },
-              { href: 'https://www.linkedin.com/in/jestingigi11/', icon: <FaLinkedin size={18} />, label: 'LinkedIn' },
-              { href: 'https://github.com/JestinGigi', icon: <FaGithub size={18} />, label: 'GitHub' },
-            ].map((s) => (
-              <a
-                key={s.label}
-                href={s.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className='p-2.5 rounded-xl transition-all duration-200 hover:scale-110'
-                style={{
-                  background: 'rgba(15,23,42,0.7)',
-                  border: '1px solid rgba(148,163,184,0.12)',
-                  color: '#475569',
-                }}
-                onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'rgba(6,182,212,0.5)';
-                  e.currentTarget.style.color = '#06b6d4';
-                  e.currentTarget.style.boxShadow = '0 0 14px rgba(6,182,212,0.2)';
-                }}
-                onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'rgba(148,163,184,0.12)';
-                  e.currentTarget.style.color = '#475569';
-                  e.currentTarget.style.boxShadow = 'none';
-                }}
-              >
-                {s.icon}
-              </a>
-            ))}
           </div>
         </div>
 
-        {/* RIGHT — profile photo */}
-        <div className='flex justify-center md:justify-end order-1 md:order-2'>
-          <div className='relative'>
-            {/* Glow ring behind photo */}
-            <div className='absolute inset-0 rounded-full'
-              style={{
-                background: 'radial-gradient(circle, rgba(6,182,212,0.15) 0%, transparent 70%)',
-                transform: 'scale(1.15)',
-                filter: 'blur(20px)',
-              }}
+        <div className='relative mx-auto w-full max-w-sm md:max-w-none'>
+          <div className='card relative aspect-[4/5] overflow-hidden'>
+            <img
+              src={profilePhoto}
+              alt='Portrait of Jestin Gigi'
+              className='h-full w-full object-cover object-[50%_20%]'
+              width='1200'
+              height='675'
+              fetchPriority='high'
             />
-
-            {/* Photo container */}
-            <div className='relative w-64 h-64 sm:w-80 sm:h-80 md:w-[380px] md:h-[380px] rounded-full overflow-hidden'
-              style={{
-                border: '2px solid rgba(6,182,212,0.25)',
-                boxShadow: '0 0 40px rgba(6,182,212,0.1), inset 0 0 40px rgba(0,0,0,0.3)',
-              }}
-            >
-              <img
-                src={profilePhoto}
-                alt="Jestin Gigi — DevOps Engineer"
-                className='w-full h-full object-cover object-center'
-              />
-              {/* Subtle inner gradient to blend bottom into dark bg */}
-              <div className='absolute inset-0 rounded-full'
-                style={{
-                  background: 'radial-gradient(ellipse at bottom, rgba(3,7,18,0.3) 0%, transparent 60%)',
-                }}
-              />
-            </div>
-
-            {/* Floating badge — years of experience */}
-            <div className='absolute bottom-6 -left-4 px-4 py-2.5 rounded-xl'
-              style={{
-                background: 'rgba(15,23,42,0.95)',
-                border: '1px solid rgba(6,182,212,0.3)',
-                backdropFilter: 'blur(12px)',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-              }}
-            >
-              <p className='font-mono text-xs' style={{ color: '#475569' }}>Experience</p>
-              <p className='text-lg font-bold text-gradient'>2+ Years</p>
-            </div>
-
-            {/* Floating badge — role */}
-            <div className='absolute top-6 -right-4 px-4 py-2.5 rounded-xl'
-              style={{
-                background: 'rgba(15,23,42,0.95)',
-                border: '1px solid rgba(59,130,246,0.3)',
-                backdropFilter: 'blur(12px)',
-                boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
-              }}
-            >
-              <p className='font-mono text-xs' style={{ color: '#475569' }}>Role</p>
-              <p className='text-sm font-bold' style={{ color: '#3b82f6' }}>DevOps Eng.</p>
-            </div>
+            <div className='absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-neutral-800/80 to-transparent' aria-hidden='true' />
+            <p className='absolute bottom-5 left-5 right-5 rounded-[10px] bg-neutral-800/90 px-4 py-3 text-sm font-bold text-neutral-100 backdrop-blur'>
+              Based in {profile.location}
+            </p>
           </div>
         </div>
-      </div>
 
-      {/* Bottom fade into next section */}
-      <div className='absolute bottom-0 left-0 right-0 h-20 pointer-events-none'
-        style={{ background: 'linear-gradient(to bottom, transparent, #030712)' }} />
-    </div>
+        <aside aria-label='Quick links' className='grid gap-0 md:col-span-2 md:grid-cols-3 md:gap-10 md:border-t md:border-neutral-700 md:pt-12 xl:col-span-1 xl:grid-cols-1 xl:gap-0 xl:border-0 xl:pt-0'>
+          <HeroAside title='About me'>
+            <p className='mb-6 text-base leading-[1.7]'>
+              3+ years managing production infrastructure, incident response and automation across AWS microservices and industrial automation.
+            </p>
+            <a href='#about' className='arrow-link mt-auto text-sm uppercase tracking-[0.06em]'>
+              Learn more <FiArrowRight aria-hidden='true' />
+            </a>
+          </HeroAside>
+          <HeroAside title='My work'>
+            <p className='mb-6 text-base leading-[1.7]'>
+              GitLab CI/CD observability and an automated migration of 144 projects to SonarQube Cloud.
+            </p>
+            <a href='#projects' className='arrow-link mt-auto text-sm uppercase tracking-[0.06em]'>
+              Browse projects <FiArrowRight aria-hidden='true' />
+            </a>
+          </HeroAside>
+          <HeroAside title='Follow me'>
+            <ul className='-ml-3 flex gap-1'>
+              {socials.map((social) => (
+                <li key={social.label}>
+                  <a
+                    href={social.href}
+                    className='social-link'
+                    aria-label={social.label}
+                    target={social.external ? '_blank' : undefined}
+                    rel={social.external ? 'noopener noreferrer' : undefined}
+                  >
+                    {social.icon}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </HeroAside>
+        </aside>
+      </div>
+    </section>
   )
 }
 

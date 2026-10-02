@@ -1,133 +1,91 @@
 import React from 'react'
-import { FaDocker, FaJenkins, FaAws } from 'react-icons/fa'
-import { SiKubernetes, SiTerraform, SiJfrog } from 'react-icons/si'
+import { FaAws } from 'react-icons/fa'
+import { SiGitlab, SiGrafana, SiKubernetes, SiPython, SiTerraform } from 'react-icons/si'
+
+const skills = [
+  {
+    name: 'AWS cloud',
+    icon: FaAws,
+    summary: 'Running production workloads and device connectivity on AWS, from compute and data to networking and access.',
+    tools: ['EC2', 'EKS', 'RDS', 'IoT Core', 'IAM', 'S3', 'Route 53', 'VPC', 'CloudWatch'],
+  },
+  {
+    name: 'Kubernetes & EKS',
+    icon: SiKubernetes,
+    summary: 'Debugging and operating microservices on EKS, with container lifecycle and cluster management.',
+    tools: ['EKS', 'k9s', 'Docker', 'Service discovery'],
+  },
+  {
+    name: 'Terraform & IaC',
+    icon: SiTerraform,
+    summary: 'Managing Ewon Cloud infrastructure as repeatable, version-controlled code to reduce manual configuration.',
+    tools: ['Terraform', 'Git', 'AWS'],
+  },
+  {
+    name: 'CI/CD & GitOps',
+    icon: SiGitlab,
+    summary: 'Weekly production releases with Flux CD and GitLab CI, plus Jenkins pipelines for firmware delivery.',
+    tools: ['GitLab CI/CD', 'Flux CD', 'Jenkins', 'JFrog Artifactory', 'Harbor', 'SonarQube'],
+  },
+  {
+    name: 'Observability & on-call',
+    icon: SiGrafana,
+    summary: 'Dashboards and alerting against 99.8%/99.6% SLO/SLA targets, backed by 24/7 on-call and root cause analysis.',
+    tools: ['Grafana', 'Prometheus', 'CloudWatch', 'Opsgenie', 'Jira Service Desk'],
+  },
+  {
+    name: 'Python & Bash automation',
+    icon: SiPython,
+    summary: 'Scripting incident investigation, operational tasks and bulk setup work that would otherwise be manual.',
+    tools: ['Python', 'Bash', 'Selenium', 'Linux'],
+  },
+]
+
+const alsoUsed = ['PostgreSQL', 'RabbitMQ', 'Keycloak', 'VPN & networking', 'Jira', 'Confluence', 'GitHub Copilot', 'Rovo']
 
 const TechStack = () => {
-  const skills = [
-    {
-      name: 'Kubernetes',
-      experience: '2 years',
-      level: 85,
-      icon: <SiKubernetes size={36} />,
-      iconColor: '#326CE5',
-      accentColor: '#326CE5',
-    },
-    {
-      name: 'Docker',
-      experience: '2 years',
-      level: 85,
-      icon: <FaDocker size={36} />,
-      iconColor: '#2496ED',
-      accentColor: '#2496ED',
-    },
-    {
-      name: 'Jenkins',
-      experience: '2 years',
-      level: 85,
-      icon: <FaJenkins size={36} />,
-      iconColor: '#D33833',
-      accentColor: '#D33833',
-    },
-    {
-      name: 'AWS',
-      experience: '1.5 years',
-      level: 75,
-      icon: <FaAws size={36} />,
-      iconColor: '#FF9900',
-      accentColor: '#FF9900',
-    },
-    {
-      name: 'Terraform',
-      experience: '1 year',
-      level: 70,
-      icon: <SiTerraform size={36} />,
-      iconColor: '#7B42BC',
-      accentColor: '#7B42BC',
-    },
-    {
-      name: 'Artifactory (JFrog)',
-      experience: '2 years',
-      level: 85,
-      icon: <SiJfrog size={36} />,
-      iconColor: '#40BE46',
-      accentColor: '#40BE46',
-    },
-  ]
-
-  const stats = [
-    { value: '2+', label: 'Years Total IT Experience' },
-    { value: '2+', label: 'Years Full-Time Experience' },
-    { value: '6+', label: 'Core Technologies' },
-  ]
-
   return (
-    <div id="TechStack" className='py-24 bg-grid' style={{ background: 'linear-gradient(180deg, #030712 0%, #0d1117 100%)' }}>
-      <div className='max-w-[1040px] m-auto px-4 md:px-20'>
-
-        {/* Section header */}
-        <div className="mb-16 text-center">
-          <p className='font-mono text-xs tracking-widest mb-3' style={{ color: '#06b6d4' }}>01 / EXPERTISE</p>
-          <h2 className='text-4xl font-extrabold tracking-tight mb-3' style={{ color: '#f1f5f9' }}>Tech Stack</h2>
-          <div className='w-16 h-0.5 mx-auto rounded-full section-underline mb-4' />
-          <p className='text-sm' style={{ color: '#475569' }}>Core DevOps tools and technologies I work with</p>
+    <section id='expertise' aria-labelledby='expertise-title' className='section'>
+      <div className='container-x'>
+        <div className='mb-14 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end'>
+          <div>
+            <p className='section-label mb-5'>My expertise</p>
+            <h2 id='expertise-title' className='heading-2'>The skills that keep production running</h2>
+          </div>
+          <p className='lg:pb-2'>
+            Cloud infrastructure, delivery pipelines and observability, tied together with practical automation.
+          </p>
         </div>
 
-        {/* Skills grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {skills.map((skill, index) => (
-            <div
-              key={index}
-              className='card-glow rounded-2xl p-6'
-              style={{ background: 'rgba(15,23,42,0.6)', backdropFilter: 'blur(12px)' }}
-            >
-              {/* Icon + name row */}
-              <div className="flex items-center gap-4 mb-5">
-                <div className='p-2.5 rounded-xl' style={{
-                  background: `${skill.iconColor}12`,
-                  border: `1px solid ${skill.iconColor}25`,
-                  color: skill.iconColor
-                }}>
-                  {skill.icon}
-                </div>
-                <div>
-                  <h3 className='font-semibold text-sm' style={{ color: '#f1f5f9' }}>{skill.name}</h3>
-                  <p className='font-mono text-xs mt-0.5' style={{ color: '#475569' }}>{skill.experience}</p>
-                </div>
-                <span className='ml-auto font-mono text-sm font-semibold' style={{ color: skill.accentColor }}>
-                  {skill.level}%
-                </span>
+        <ul className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
+          {skills.map((skill) => {
+            const Icon = skill.icon
+            return (
+            <li key={skill.name} className='card flex flex-col p-8 lg:p-9'>
+              <span className='mb-8 inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary text-neutral-100' aria-hidden='true'>
+                <Icon size={26} />
+              </span>
+              <h3 className='text-2xl leading-[1.4]'>{skill.name}</h3>
+              <p className='mt-3 text-base leading-[1.7]'>{skill.summary}</p>
+              <ul className='mt-6 flex flex-wrap gap-2' aria-label={`${skill.name} tools`}>
+                {skill.tools.map((tool) => (
+                  <li key={tool} className='rounded-lg bg-neutral-800 px-3 py-1.5 text-sm font-medium text-neutral-300'>{tool}</li>
+                ))}
+              </ul>
+              <div className='mt-auto pt-8' aria-hidden='true'>
+                <span className='block h-1 w-10 bg-neutral-100' />
               </div>
+            </li>
+            )
+          })}
+        </ul>
 
-              {/* Progress bar */}
-              <div className='w-full h-1.5 rounded-full overflow-hidden' style={{ background: 'rgba(148,163,184,0.08)' }}>
-                <div
-                  className='h-full rounded-full transition-all duration-1000 ease-out'
-                  style={{
-                    width: `${skill.level}%`,
-                    background: `linear-gradient(90deg, ${skill.accentColor}aa, ${skill.accentColor})`,
-                    boxShadow: `0 0 8px ${skill.accentColor}55`
-                  }}
-                />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Stats row */}
-        <div className='mt-10 grid grid-cols-1 md:grid-cols-3 gap-5'>
-          {stats.map((s, i) => (
-            <div
-              key={i}
-              className='card-glow rounded-2xl p-6 text-center'
-              style={{ background: 'rgba(15,23,42,0.6)', backdropFilter: 'blur(12px)' }}
-            >
-              <p className='text-3xl font-extrabold text-gradient mb-1'>{s.value}</p>
-              <p className='text-xs font-mono' style={{ color: '#475569' }}>{s.label}</p>
-            </div>
-          ))}
+        <div className='mt-10 flex flex-col gap-4 rounded-[20px] border border-neutral-700 p-6 md:flex-row md:items-center md:gap-8 md:p-8'>
+          <p className='shrink-0 text-base font-bold uppercase tracking-[0.06em] text-neutral-100'>Also working with</p>
+          <p className='text-base'>{alsoUsed.join(' · ')}</p>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

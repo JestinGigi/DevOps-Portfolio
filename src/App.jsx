@@ -1,24 +1,29 @@
-import { useState } from 'react'
 import Sidenav from './components/Sidenav'
 import Main from './components/Main'
-import Work from './components/Work'
-import Education from './components/Education'
+import About from './components/About'
 import TechStack from './components/TechStack'
 import Projects from './components/Projects'
+import Work from './components/Work'
+import Education from './components/Education'
 import Contact from './components/Contact'
+import Footer from './components/Footer'
 
 function App() {
-
   return (
-    <div style={{ background: '#030712', minHeight: '100vh' }}>
+    <>
+      <a href='#main-content' className='skip-link'>Skip to content</a>
       <Sidenav />
-      <Main />
-      <TechStack />
-      <Work />
-      <Education />
-      <Projects />
-      <Contact />
-    </div>
+      <main id='main-content' tabIndex={-1} className='outline-none'>
+        <Main />
+        <About />
+        <TechStack />
+        <Projects />
+        <Work />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   )
 }
 
