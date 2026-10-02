@@ -1,6 +1,7 @@
 import React from 'react'
 import { FiArrowRight, FiArrowUpRight, FiDownload } from 'react-icons/fi'
 import { profile } from '../data/profile'
+import Reveal from './Reveal'
 
 const directLinks = [
     { label: 'Email', text: profile.email, href: `mailto:${profile.email}`, icon: FiArrowRight },
@@ -23,7 +24,7 @@ const Contact = () => {
     return (
         <section id='contact' aria-labelledby='contact-title' className='section bg-neutral-700/40'>
             <div className='container-x grid gap-16 lg:grid-cols-2 lg:gap-20'>
-                <div>
+                <Reveal>
                     <span className='hero-rule mb-8 w-24' aria-hidden='true' />
                     <h2 id='contact-title' className='heading-2'>
                         Interested in working together? Let’s{' '}
@@ -57,9 +58,9 @@ const Contact = () => {
                             )
                         })}
                     </ul>
-                </div>
+                </Reveal>
 
-                <form action='https://formcarry.com/s/yWiPqmqA_Lp' method='POST' encType='multipart/form-data' className='grid gap-9 lg:pt-4'>
+                <Reveal as='form' delay={150} action='https://formcarry.com/s/yWiPqmqA_Lp' method='POST' encType='multipart/form-data' className='grid gap-9 lg:pt-4'>
                     <Field id='contact-name' label='Your name'>
                         <input id='contact-name' className='field-input' type='text' name='name' autoComplete='name' required />
                     </Field>
@@ -77,7 +78,7 @@ const Contact = () => {
                             Send message <FiArrowRight aria-hidden='true' size={20} />
                         </button>
                     </div>
-                </form>
+                </Reveal>
             </div>
         </section>
     )

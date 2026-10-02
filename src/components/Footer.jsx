@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { FiArrowRight, FiArrowUp, FiMail } from 'react-icons/fi'
-import profilePhoto from '../assets/profile-portrait.jpg'
+import profilePhoto from '../assets/profile-cutout.png'
 import { profile } from '../data/profile'
 
 const Footer = () => {
@@ -11,7 +11,8 @@ const Footer = () => {
         <div>
           <div className='flex items-center gap-5'>
             <div className='h-20 w-20 shrink-0 overflow-hidden rounded-full bg-neutral-700 md:h-24 md:w-24'>
-              <img src={profilePhoto} alt='' className='h-full w-full origin-top scale-[1.3] object-cover object-top' loading='lazy' />
+              {/* Face sits at ~46% x / 30% y of the image; scale around it, then shift it to the circle centre. */}
+              <img src={profilePhoto} alt='' className='h-full w-full origin-[46%_30%] translate-x-[4%] translate-y-[25%] scale-[1.5] object-cover object-top' loading='lazy' />
             </div>
             <div>
               <p className='text-2xl font-bold text-neutral-100 md:text-[1.75rem]'>{profile.name}</p>

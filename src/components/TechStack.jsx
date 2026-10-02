@@ -1,6 +1,7 @@
 import React from 'react'
 import { FaAws } from 'react-icons/fa'
 import { SiGitlab, SiGrafana, SiKubernetes, SiPython, SiTerraform } from 'react-icons/si'
+import Reveal from './Reveal'
 
 const skills = [
   {
@@ -47,7 +48,7 @@ const TechStack = () => {
   return (
     <section id='expertise' aria-labelledby='expertise-title' className='section'>
       <div className='container-x'>
-        <div className='mb-14 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end'>
+        <Reveal className='mb-14 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end'>
           <div>
             <p className='section-label mb-5'>My expertise</p>
             <h2 id='expertise-title' className='heading-2'>The skills that keep production running</h2>
@@ -55,13 +56,13 @@ const TechStack = () => {
           <p className='lg:pb-2'>
             Cloud infrastructure, delivery pipelines and observability, tied together with practical automation.
           </p>
-        </div>
+        </Reveal>
 
         <ul className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
-          {skills.map((skill) => {
+          {skills.map((skill, index) => {
             const Icon = skill.icon
             return (
-            <li key={skill.name} className='card flex flex-col p-8 lg:p-9'>
+            <Reveal as='li' key={skill.name} delay={(index % 3) * 120} className='card flex flex-col p-8 lg:p-9'>
               <span className='mb-8 inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary text-neutral-100' aria-hidden='true'>
                 <Icon size={26} />
               </span>
@@ -75,15 +76,15 @@ const TechStack = () => {
               <div className='mt-auto pt-8' aria-hidden='true'>
                 <span className='block h-1 w-10 bg-neutral-100' />
               </div>
-            </li>
+            </Reveal>
             )
           })}
         </ul>
 
-        <div className='mt-10 flex flex-col gap-4 rounded-[20px] border border-neutral-700 p-6 md:flex-row md:items-center md:gap-8 md:p-8'>
+        <Reveal className='mt-10 flex flex-col gap-4 rounded-[20px] border border-neutral-700 p-6 md:flex-row md:items-center md:gap-8 md:p-8'>
           <p className='shrink-0 text-base font-bold uppercase tracking-[0.06em] text-neutral-100'>Also working with</p>
           <p className='text-base'>{alsoUsed.join(' · ')}</p>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

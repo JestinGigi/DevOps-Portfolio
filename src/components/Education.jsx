@@ -1,5 +1,6 @@
 import React from 'react'
 import EducationItem from './EducationItem'
+import Reveal from './Reveal'
 
 const degree = {
   period: '2020 – 2024',
@@ -17,11 +18,13 @@ const Education = () => {
   return (
     <section id='education' aria-labelledby='education-title' className='section pt-0 md:pt-0'>
       <div className='container-x'>
-        <p className='section-label mb-5'>Education &amp; courses</p>
-        <h2 id='education-title' className='mb-10 text-[clamp(1.75rem,1.4rem+1.4vw,2.375rem)] leading-[1.25]'>Foundations in computer science and Linux</h2>
+        <Reveal>
+          <p className='section-label mb-5'>Education &amp; courses</p>
+          <h2 id='education-title' className='mb-10 text-[clamp(1.75rem,1.4rem+1.4vw,2.375rem)] leading-[1.25]'>Foundations in computer science and Linux</h2>
+        </Reveal>
         <div className='grid gap-6 md:grid-cols-2'>
-          <EducationItem {...degree} />
-          <article className='card p-8 md:p-10'>
+          <Reveal className='flex *:w-full'><EducationItem {...degree} /></Reveal>
+          <Reveal as='article' delay={150} className='card p-8 md:p-10'>
             <p className='text-base font-bold text-neutral-300'>Certifications &amp; courses</p>
             <ul className='mt-4 grid gap-6'>
               {courses.map((course) => (
@@ -31,7 +34,7 @@ const Education = () => {
                 </li>
               ))}
             </ul>
-          </article>
+          </Reveal>
         </div>
       </div>
     </section>

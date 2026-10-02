@@ -1,5 +1,6 @@
 import Sidenav from './components/Sidenav'
 import Main from './components/Main'
+import Marquee from './components/Marquee'
 import About from './components/About'
 import TechStack from './components/TechStack'
 import Projects from './components/Projects'
@@ -15,6 +16,7 @@ function App() {
       <Sidenav />
       <main id='main-content' tabIndex={-1} className='outline-none'>
         <Main />
+        <Marquee />
         <About />
         <TechStack />
         <Projects />

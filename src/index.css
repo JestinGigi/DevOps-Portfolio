@@ -251,6 +251,98 @@
   .skip-link:focus {
     top: 1rem;
   }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms),
+      transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0ms);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 2rem;
+    min-width: 100%;
+    padding-right: 2rem;
+    white-space: nowrap;
+    animation: marquee-scroll 48s linear infinite;
+  }
+
+  @media (min-width: 768px) {
+    .marquee-track {
+      gap: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  .marquee-reverse .marquee-track {
+    animation-direction: reverse;
+    animation-duration: 40s;
+  }
+
+  .marquee:hover .marquee-track,
+  .marquee.is-paused .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--color-neutral-400);
+  }
+
+  .nav-link {
+    position: relative;
+    padding-block: 0.25rem;
+    color: var(--color-neutral-100);
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background-color: var(--color-secondary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-accent);
+  }
+
+  .nav-link[aria-current="location"] {
+    color: var(--color-accent);
+  }
+
+  .nav-link[aria-current="location"]::after,
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -270,5 +362,19 @@
   .social-link:hover,
   .arrow-link:hover svg {
     transform: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .marquee-toggle {
+    display: none;
   }
 }

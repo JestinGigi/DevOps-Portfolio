@@ -1,5 +1,7 @@
 import React from 'react'
 import { FiArrowRight } from 'react-icons/fi'
+import CountUp from './CountUp'
+import Reveal from './Reveal'
 
 const stats = [
   { value: '3+', label: 'Years in DevOps & SRE' },
@@ -15,7 +17,7 @@ const About = () => {
     <section id='about' aria-labelledby='about-title' className='section bg-neutral-700/40'>
       <div className='container-x'>
         <div className='grid gap-14 lg:grid-cols-2 lg:gap-20'>
-          <div>
+          <Reveal>
             <p className='section-label mb-5'>About me</p>
             <h2 id='about-title' className='heading-2'>I keep production reliable, observable and automated</h2>
             <p className='mt-6'>
@@ -24,17 +26,17 @@ const About = () => {
             <a href='#experience' className='arrow-link mt-10 text-lg'>
               See my experience <FiArrowRight aria-hidden='true' size={22} />
             </a>
-          </div>
+          </Reveal>
 
           <div className='lg:pt-14'>
             <dl className='grid grid-cols-2 gap-x-8 gap-y-10'>
-              {stats.map((stat) => (
-                <div key={stat.label} className='flex flex-col gap-3 border-t border-neutral-600 pt-6'>
+              {stats.map((stat, index) => (
+                <Reveal key={stat.label} delay={index * 120} className='flex flex-col gap-3 border-t border-neutral-600 pt-6'>
                   <dt className='order-2 max-w-[14rem] text-base font-bold leading-[1.35] text-neutral-100'>{stat.label}</dt>
                   <dd className='order-1 text-[clamp(3rem,2.4rem+2vw,4.25rem)] font-bold leading-none tracking-[-0.03em] text-neutral-100'>
-                    {stat.value}
+                    <CountUp value={stat.value} />
                   </dd>
-                </div>
+                </Reveal>
               ))}
             </dl>
             <p className='mt-10'>
@@ -43,14 +45,14 @@ const About = () => {
           </div>
         </div>
 
-        <div className='mt-20 flex flex-col gap-6 border-t border-neutral-600 pt-10 md:flex-row md:items-center md:justify-between'>
+        <Reveal className='mt-20 flex flex-col gap-6 border-t border-neutral-600 pt-10 md:flex-row md:items-center md:justify-between'>
           <p className='text-base font-bold uppercase tracking-[0.06em] text-neutral-100'>Where I’ve worked</p>
           <ul className='flex flex-wrap gap-x-10 gap-y-3'>
             {employers.map((employer) => (
               <li key={employer} className='text-xl font-bold text-neutral-300'>{employer}</li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
   )

@@ -1,9 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { navLinks, profile } from '../data/profile';
 
 const Sidenav = () => {
     const [open, setOpen] = useState(false);
+    const [active, setActive] = useState('');
+    const progressRef = useRef(null);
+
+    useEffect(() => {
+        const ids = ['top', ...navLinks.map((link) => link.href.slice(1))];
+        const sections = ids.map((id) => document.getElementById(id)).filter(Boolean);
+        // A section is active while it crosses the middle band of the viewport.
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) setActive(entry.target.id === 'top' ? '' : `#${entry.target.id}`);
+                });
+            },
+            { rootMargin: '-45% 0px -50% 0px' },
+        );
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        let frame = 0;
+        const update = () => {
+            frame = 0;
+            const max = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = max > 0 ? Math.min(1, window.scrollY / max) : 0;
+            if (progressRef.current) progressRef.current.style.transform = `scaleX(${progress})`;
+        };
+        const onScroll = () => {
+            if (!frame) frame = requestAnimationFrame(update);
+        };
+        update();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+        return () => {
+            cancelAnimationFrame(frame);
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
+        };
+    }, []);
 
     useEffect(() => {
         if (!open) return undefined;
@@ -26,7 +65,11 @@ const Sidenav = () => {
                     <ul className='flex items-center gap-8 lg:gap-10'>
                         {navLinks.map((link) => (
                             <li key={link.href}>
-                                <a href={link.href} className='text-lg text-neutral-100 transition-colors duration-300 hover:text-accent'>
+                                <a
+                                    href={link.href}
+                                    className='nav-link text-lg'
+                                    aria-current={active === link.href ? 'location' : undefined}
+                                >
                                     {link.label}
                                 </a>
                             </li>
@@ -54,7 +97,8 @@ const Sidenav = () => {
                                 <a
                                     href={link.href}
                                     onClick={() => setOpen(false)}
-                                    className='block py-4 text-xl font-bold text-neutral-100'
+                                    aria-current={active === link.href ? 'location' : undefined}
+                                    className={`block py-4 text-xl font-bold ${active === link.href ? 'text-accent' : 'text-neutral-100'}`}
                                 >
                                     {link.label}
                                 </a>
@@ -63,6 +107,11 @@ const Sidenav = () => {
                     </ul>
                 </nav>
             )}
+            <div
+                ref={progressRef}
+                aria-hidden='true'
+                className='absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-secondary'
+            />
         </header>
     );
 };

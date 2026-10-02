@@ -1,5 +1,6 @@
 import React from 'react'
 import WorkItem from './WorkItem'
+import Reveal from './Reveal'
 
 const data = [
   {
@@ -48,10 +49,10 @@ const Work = () => {
   return (
     <section id='experience' aria-labelledby='experience-title' className='section'>
       <div className='container-x'>
-        <div className='mb-14 max-w-3xl'>
+        <Reveal className='mb-14 max-w-3xl'>
           <p className='section-label mb-5'>Experience</p>
           <h2 id='experience-title' className='heading-2'>Where I’ve built and run infrastructure</h2>
-        </div>
+        </Reveal>
         <ol className='border-t border-neutral-700'>
           {data.map((item) => (
             <WorkItem key={item.company} {...item} />

@@ -2,6 +2,7 @@ import React from 'react'
 import { FiActivity, FiArrowRight, FiArrowUpRight, FiBell, FiCloud, FiServer } from 'react-icons/fi'
 import { SiClickhouse, SiGitlab, SiGrafana } from 'react-icons/si'
 import ProjectItem from './ProjectItem'
+import Reveal from './Reveal'
 import { profile } from '../data/profile'
 
 const WindowChrome = ({ label }) => (
@@ -139,9 +140,9 @@ const projects = [
 const Projects = () => {
   return (
     <section id='projects' aria-labelledby='projects-title' className='section bg-neutral-700/40'>
-      <div className='container-x grid items-start gap-8 lg:grid-cols-2 lg:gap-10'>
-        <div className='grid gap-8 lg:gap-10'>
-          <div className='lg:pb-6'>
+      <div className='container-x grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-10'>
+        <div className='grid min-w-0 grid-cols-1 gap-8 lg:gap-10'>
+          <Reveal className='lg:pb-6'>
             <p className='section-label mb-5'>Selected work</p>
             <h2 id='projects-title' className='heading-2'>Projects that made delivery measurable and repeatable</h2>
             <p className='mt-6'>
@@ -151,10 +152,10 @@ const Projects = () => {
               More on GitHub <FiArrowUpRight aria-hidden='true' size={22} />
               <span className='sr-only'>(opens in a new tab)</span>
             </a>
-          </div>
-          <ProjectItem {...projects[0]} />
+          </Reveal>
+          <Reveal><ProjectItem {...projects[0]} /></Reveal>
         </div>
-        <ProjectItem {...projects[1]} />
+        <Reveal delay={150}><ProjectItem {...projects[1]} /></Reveal>
       </div>
     </section>
   )

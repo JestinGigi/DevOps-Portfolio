@@ -1,8 +1,9 @@
 import React from 'react'
+import Reveal from './Reveal'
 
 const WorkItem = ({ period, company, location, title, details, current = false }) => {
   return (
-    <li className='grid gap-6 border-b border-neutral-700 py-10 md:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] md:gap-12 md:py-14 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]'>
+    <Reveal as='li' className='grid gap-6 border-b border-neutral-700 py-10 md:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] md:gap-12 md:py-14 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)]'>
       <div>
         <p className='flex items-center gap-3 text-base font-bold text-neutral-100'>
           <span
@@ -26,7 +27,7 @@ const WorkItem = ({ period, company, location, title, details, current = false }
           ))}
         </ul>
       </div>
-    </li>
+    </Reveal>
   )
 }
 
