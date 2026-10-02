@@ -54,7 +54,7 @@ const Sidenav = () => {
     }, [open]);
 
     return (
-        <header className='sticky top-0 z-40 border-b border-neutral-700/70 bg-neutral-800/95 backdrop-blur'>
+        <header className='sticky top-0 z-40 border-b border-neutral-700/70 bg-neutral-800'>
             <div className='container-x flex h-20 items-center justify-between gap-6'>
                 <a href='#top' className='flex items-center gap-2.5 text-xl font-bold text-neutral-100' onClick={() => setOpen(false)}>
                     <span aria-hidden='true' className='font-bold text-secondary'>&lt;/&gt;</span>
